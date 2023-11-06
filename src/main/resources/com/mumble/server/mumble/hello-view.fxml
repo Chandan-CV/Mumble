@@ -12,5 +12,6 @@
     </padding>
 
     <Label fx:id="welcomeText"/>
-    <Button text="Hello!" onAction="#onHelloButtonClick"/>
+    <Button text="Start server" onAction="#onHelloButtonClick" fx:id="serverButton"/>
+    <Button text="get server status" onAction="#getStatusButtonClicked"/>
 </VBox>
