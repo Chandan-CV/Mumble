@@ -5,7 +5,7 @@ module com.mumble.server.mumble {
     requires org.controlsfx.controls;
     requires org.kordamp.bootstrapfx.core;
     requires spark.core;
-
+    requires org.jooq;
 
 
     opens com.mumble.server.mumble to javafx.fxml;

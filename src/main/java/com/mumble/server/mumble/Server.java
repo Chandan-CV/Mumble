@@ -1,63 +1,50 @@
 package com.mumble.server.mumble;
-import spark.Spark;
 
 import java.net.InetAddress;
-import java.net.InetSocketAddress;
 import java.net.UnknownHostException;
-
-import static spark.Spark.*;
-
-
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.nio.file.FileSystems;
-import java.nio.file.Path;
-
-//import com.google.zxing.BarcodeFormat;
-//import com.google.zxing.WriterException;
-//import com.google.zxing.client.j2se.MatrixToImageConfig;
-//import com.google.zxing.client.j2se.MatrixToImageWriter;
-//import com.google.zxing.common.BitMatrix;
-//import com.google.zxing.qrcode.QRCodeWriter;
+import spark.Spark;
 
 public class Server extends Thread {
+    public Server() {
+    }
 
-    public static String getHostAddress()  {
-        String hostAddress ="";
-        try{
+    public static String getHostAddress() {
+        String hostAddress = "";
+
+        try {
             InetAddress ip = InetAddress.getLocalHost();
-            hostAddress+=ip;
-        }catch (UnknownHostException e){
+            hostAddress = hostAddress + ip;
+        } catch (UnknownHostException var2) {
             System.out.println("Error fetching the local address");
         }
-        return "http://"+hostAddress.split("/")[1]+":4567/";
 
+        String[] var10000 = hostAddress.split("/");
+        return "http://" + var10000[1] + ":4567/";
     }
 
+    public static String getJsonString() {
+        return "[{\"title\":\"The Shawshank Redemption\",\"description\":\"Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.\"},{\"title\":\"The Godfather\",\"description\":\"The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant son.\"},{\"title\":\"The Dark Knight\",\"description\":\"When the menace known as The Joker emerges, Batman must confront his own demons to stop him.\"},{\"title\":\"Pulp Fiction\",\"description\":\"The lives of two mob hitmen, a boxer, a gangster and his wife, and a pair of diner bandits intertwine in four tales of violence and redemption.\"},{\"title\":\"The Matrix\",\"description\":\"A computer programmer discovers that reality as he knows it is a simulation created by machines to subjugate humanity.\"},{\"title\":\"Forrest Gump\",\"description\":\"The presidencies of Kennedy and Johnson, the events of Vietnam, Watergate, and other history unfold through the perspective of an Alabama man with an IQ of 75.\"},{\"title\":\"The Lord of the Rings: The Fellowship of the Ring\",\"description\":\"A meek Hobbit from the Shire and eight companions set out on a journey to destroy the powerful One Ring and save Middle-earth from the Dark Lord Sauron.\"},{\"title\":\"Inception\",\"description\":\"A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O.\"},{\"title\":\"Schindler's List\",\"description\":\"In German-occupied Poland during World War II, Oskar Schindler gradually becomes concerned for his Jewish workforce after witnessing their persecution by the Nazis.\"},{\"title\":\"The Silence of the Lambs\",\"description\":\"A young F.B.I. cadet must receive the help of an incarcerated and manipulative cannibal killer to help catch another serial killer, a madman who skins his victims.\"}]";
+    }
 
-
-//    public static byte[] getQRCodeImage(String text, int width, int height) throws WriterException, IOException {
-//        QRCodeWriter qrCodeWriter = new QRCodeWriter();
-//        BitMatrix bitMatrix = qrCodeWriter.encode(text, BarcodeFormat.QR_CODE, width, height);
-//
-//        ByteArrayOutputStream pngOutputStream = new ByteArrayOutputStream();
-//        MatrixToImageConfig con = new MatrixToImageConfig( 0xFF000002 , 0xFFFFC041 ) ;
-//
-//        MatrixToImageWriter.writeToStream(bitMatrix, "PNG", pngOutputStream,con);
-//        byte[] pngData = pngOutputStream.toByteArray();
-//        return pngData;
-//    }
-//
-
-
-   @Override
-    public void run(){
+    public void run() {
         System.out.println("Starting the server");
-        staticFileLocation("/public");
-        get("/", (req, res) -> {res.redirect("/index.html");return  null;});
+        Spark.staticFileLocation("/public");
+        CorsFilter.apply();
+        Spark.get("/", (req, res) -> {
+            res.redirect("/index.html");
+            return null;
+        });
+        Spark.get("/getmovies", (req, res) -> {
+            res.type("application/json");
+            return getJsonString();
+        });
+        Spark.post("/sendresult", (request, response) -> {
+            System.out.println(request.body().split("/")[0]);
+            return null;
+        });
     }
 
-    public  void stopServer(){
+    public void stopServer() {
         System.out.println("Starting the server");
         Spark.stop();
     }
