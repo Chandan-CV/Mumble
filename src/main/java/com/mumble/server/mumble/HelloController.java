@@ -4,6 +4,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
+import java.util.Arrays;
+
 public class HelloController {
 
     @FXML
@@ -28,5 +30,9 @@ public class HelloController {
         System.out.println(Main.getServerStatus());
         System.out.println(Main.getServer());
         System.out.println(Server.getHostAddress());
+//        try{
+//            System.out.println(Arrays.toString(Server.getQRCodeImage(Server.getHostAddress(), 200, 200)));
+//        }catch(Exception e){
+//        }
     }
 }

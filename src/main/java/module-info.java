@@ -6,6 +6,8 @@ module com.mumble.server.mumble {
     requires org.kordamp.bootstrapfx.core;
     requires spark.core;
 
+
+
     opens com.mumble.server.mumble to javafx.fxml;
     exports com.mumble.server.mumble;
 }
