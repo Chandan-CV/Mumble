@@ -5,6 +5,9 @@ module com.mumble.server.mumble {
     requires org.controlsfx.controls;
     requires org.kordamp.bootstrapfx.core;
     requires spark.core;
+    requires core;
+    requires javase;
+
 
     opens com.mumble.server.mumble to javafx.fxml;
     exports com.mumble.server.mumble;

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mumble.server.mumble.HelloController">
+   <children>
+      <Label layoutX="231.0" layoutY="98.0" text="Select the desired genre:" />
+      <RadioButton layoutX="250.0" layoutY="133.0" mnemonicParsing="false" text="Comedy" />
+      <RadioButton layoutX="250.0" layoutY="161.0" mnemonicParsing="false" text="Horror" />
+      <RadioButton layoutX="250.0" layoutY="191.0" mnemonicParsing="false" text="Thriller" />
+      <RadioButton layoutX="250.0" layoutY="224.0" mnemonicParsing="false" text="RomCom" />
+      <Button layoutX="258.0" layoutY="261.0" mnemonicParsing="false" onAction="#forurl" text="Next" />
+   </children>
+</AnchorPane>
