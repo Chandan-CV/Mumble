@@ -14,4 +14,5 @@
     <Label fx:id="welcomeText"/>
     <Button text="Start server" onAction="#onHelloButtonClick" fx:id="serverButton"/>
     <Button text="get server status" onAction="#getStatusButtonClicked"/>
+    <Button text="get result" onAction="#GetResultButtonClicked"/>
 </VBox>

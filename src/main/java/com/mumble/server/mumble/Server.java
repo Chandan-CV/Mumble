@@ -36,10 +36,10 @@ public class Server extends Thread {
         });
         Spark.get("/getmovies", (req, res) -> {
             res.type("application/json");
-            return getJsonString();
+            return DB.movies;
         });
         Spark.post("/sendresult", (request, response) -> {
-            System.out.println(request.body().split("/")[0]);
+            DB.resultString += request.body();
             return null;
         });
     }

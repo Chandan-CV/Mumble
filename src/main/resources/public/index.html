@@ -59,15 +59,16 @@
 
 <script>
     async function getMovies() {
-      const response = await fetch("/getmovies")
+      const response = await fetch("http://10.29.66.77:4567/getmovies")
       const movies = await response.json()
       // console.log(movies)
       return movies
     }
     const movies = getMovies().then((movies) => {
+      console.log(movies)
       movies.forEach((movie) => {
         createMovieCard(movie)
-      })
+      });
     })
 
 const stack = document.getElementById("movieList");
@@ -76,6 +77,10 @@ const stack = document.getElementById("movieList");
 function createMovieCard(movie) {
   const card = document.createElement("div");
   card.className = "card";
+
+  const index = document.createElement("h1");
+  index.textContent = movie.id;
+
 
   const title = document.createElement("h2");
   title.textContent = movie.title;
@@ -92,9 +97,19 @@ function createMovieCard(movie) {
   const approveButton = document.createElement("button");
   approveButton.className = "button approve";
   approveButton.textContent = "Approve";
-  approveButton.addEventListener("click", () => {
+  approveButton.addEventListener("click", async() => {
       // Handle approval logic here
       console.log(`Approved: ${movie.title}`);
+
+      const response = await fetch("/sendresult",{
+          method: "POST",
+          headers: {
+              "Content-Type": "text/plain"
+          },
+          body: (movie.id).toString()
+
+      })
+
       stack.removeChild(card);
   });
 
@@ -110,6 +125,7 @@ function createMovieCard(movie) {
   buttons.appendChild(approveButton);
   buttons.appendChild(rejectButton);
 
+  card.appendChild(index);
   card.appendChild(title);
   card.appendChild(description);
   card.appendChild(buttons);

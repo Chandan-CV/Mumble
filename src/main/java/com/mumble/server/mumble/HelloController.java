@@ -32,4 +32,10 @@ public class HelloController {
         System.out.println(Main.getServer());
         System.out.println(Server.getHostAddress());
     }
+
+    @FXML
+    protected void GetResultButtonClicked(){
+        System.out.println(DB.resultString);
+        System.out.println(DB.calculateResults());
+    }
 }
