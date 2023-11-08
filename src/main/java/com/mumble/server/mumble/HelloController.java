@@ -31,6 +31,7 @@ public class HelloController {
         System.out.println(Main.getServerStatus());
         System.out.println(Main.getServer());
         System.out.println("https://api.qrserver.com/v1/create-qr-code/?size=150x150&data="+Server.getHostAddress());
+        System.out.println(Server.getHostAddress());
     }
 
     @FXML
