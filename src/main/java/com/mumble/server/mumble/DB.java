@@ -1,10 +1,7 @@
 
 package com.mumble.server.mumble;
 import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
-
-import java.util.ArrayList;
 
 
 public class DB {
@@ -15,7 +12,7 @@ public class DB {
         return obj;
     }
 
-    public static String calculateResults(){
+    public static int calculateResults(){
         String s = DB.resultString;
         JSONArray mov= getMovieArray();
         int largest =0;
@@ -34,6 +31,6 @@ public class DB {
         }
         System.out.println(largestIndex);
         System.out.println(mov.get(largestIndex));
-        return Integer.toString(largestIndex);
+        return (largestIndex);
     }
 }

@@ -59,7 +59,7 @@
 
 <script>
     async function getMovies() {
-      const response = await fetch("http://10.29.66.77:4567/getmovies")
+      const response = await fetch("/getmovies")
       const movies = await response.json()
       // console.log(movies)
       return movies

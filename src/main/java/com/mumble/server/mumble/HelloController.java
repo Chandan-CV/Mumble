@@ -30,12 +30,12 @@ public class HelloController {
     protected void getStatusButtonClicked() {
         System.out.println(Main.getServerStatus());
         System.out.println(Main.getServer());
-        System.out.println(Server.getHostAddress());
+        System.out.println("https://api.qrserver.com/v1/create-qr-code/?size=150x150&data="+Server.getHostAddress());
     }
 
     @FXML
     protected void GetResultButtonClicked(){
         System.out.println(DB.resultString);
-        System.out.println(DB.calculateResults());
+        System.out.println(DB.getMovieArray().get(DB.calculateResults()).toString());
     }
 }
