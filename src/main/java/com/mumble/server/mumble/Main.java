@@ -6,14 +6,13 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 public class Main extends Application {
     private static Server server;
     private static boolean isRunning = false;
 
-    public Main() {
-    }
 
     static void startServer() {
         server = new Server();

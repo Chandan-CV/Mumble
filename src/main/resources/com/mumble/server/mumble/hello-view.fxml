@@ -1,18 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
-<?import javafx.scene.control.Button?>
-<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.mumble.server.mumble.HelloController">
+<?import org.controlsfx.dialog.FontSelectorDialog.FontPanel?>
+<?import javafx.scene.text.Font?>
+<VBox alignment="CENTER" prefHeight="229.0" prefWidth="286.0" spacing="20.0" style="-fx-background-color: #fdfd96;" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mumble.server.mumble.HelloController">
     <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
 
-    <Label fx:id="welcomeText"/>
-    <Button text="Start server" onAction="#onHelloButtonClick" fx:id="serverButton"/>
-    <Button text="get server status" onAction="#getStatusButtonClicked"/>
-    <Button text="get result" onAction="#GetResultButtonClicked"/>
+    <Label text="Mumble">
+    <font>
+        <Font name="Chalkboard SE Light" size="20.0" />
+    </font>
+    </Label>
+    <Label fx:id="welcomeText" text="Choose your subscriptions:" />
+   <CheckBox mnemonicParsing="false" text="Netflix " />
+   <CheckBox mnemonicParsing="false" text=" Prime  " />
+   <CheckBox mnemonicParsing="false" text="Hotstar" />
+   <Button alignment="CENTER_RIGHT" mnemonicParsing="false" onAction="#onHelloButtonClick" text="Next" />
 </VBox>
